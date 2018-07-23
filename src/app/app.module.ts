@@ -21,6 +21,7 @@ import { NewtemplateComponent } from './components/newtemplate/newtemplate.compo
 import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/delete-confirm-dialog.component';
 import { TemplateDetailsComponent } from './components/template-details/template-details.component';
 import {TemplateMetadataProvider} from './providers/template-metadata-provider';
+import { PopupDialogComponent } from './shared/popup-dialog/popup-dialog.component';
 
 @NgModule({
   imports: [
@@ -72,9 +73,10 @@ import {TemplateMetadataProvider} from './providers/template-metadata-provider';
     TemplatetableComponent,
     NewtemplateComponent,
     DeleteConfirmDialogComponent,
-    TemplateDetailsComponent
+    TemplateDetailsComponent,
+    PopupDialogComponent
   ],
-  entryComponents: [DeleteConfirmDialogComponent],
+  entryComponents: [DeleteConfirmDialogComponent, PopupDialogComponent],
   providers: [TemplateService, TemplateMetadataProvider],
   bootstrap: [ AppComponent ]
 })

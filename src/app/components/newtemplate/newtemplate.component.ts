@@ -6,6 +6,7 @@ import {TemplateService} from '../../services/template.service';
 import {Template} from '../../models/template.model';
 import {DeleteConfirmDialogComponent} from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
 import {TemplateDetailsComponent} from '../template-details/template-details.component';
+import {PopupDialogComponent} from '../../shared/popup-dialog/popup-dialog.component';
 
 @Component({
   selector: 'newtemplate',
@@ -33,7 +34,7 @@ export class NewtemplateComponent implements OnInit {
   }
 
   ngOnInit() {
-    let templatename = this.activatedRoute.snapshot.params['name'];
+    const templatename = this.activatedRoute.snapshot.params['name'];
     console.log('templatename =' + templatename);
     if (templatename) {
       this.disableTemplateName = true;
@@ -97,7 +98,7 @@ export class NewtemplateComponent implements OnInit {
   }
 
   upsertTemplate() {
-    let templateToSave = this.templateDetails.mergeWithUpdates(this.selectedTemplate, this.templateName);
+    const templateToSave = this.templateDetails.mergeWithUpdates(this.selectedTemplate, this.templateName);
     if (templateToSave && templateToSave.name) {
       this.templateService.upsertTemplate(templateToSave).subscribe(resp => {
         this.templateService.getTemplateByName(this.templateName)
@@ -109,7 +110,17 @@ export class NewtemplateComponent implements OnInit {
             this.clearTemplate();
           });
       });
+    } else {
+      this.openDialog('empty template name');
     }
   }
+
+  openDialog(message: string): void {
+    const dialogRef = this.dialog.open(PopupDialogComponent, {
+      width: '250px',
+      data: {message: message}
+    });
+  }
+
 
 }
