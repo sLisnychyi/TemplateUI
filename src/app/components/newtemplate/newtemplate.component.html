@@ -1,0 +1,72 @@
+<div class="example-section">
+  <button mat-button color="primary" routerLink="/"><i class="material-icons">
+    keyboard_backspace
+  </i></button>
+</div>
+
+<mat-form-field class="example-full-width">
+  <input required matInput disabled="{{disableTemplateName}}" placeholder="Template Name" [(ngModel)]="templateName">
+</mat-form-field>
+
+<div class="example-container mat-elevation-z8 data-table">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.externalId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="placement">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Placement</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.placement}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="partner">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Partner</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.partner}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="format">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Format</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.format ? row.format.formatType : null}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        Action
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" focusable="true" (click)="editTemplate(row)">
+          <i class="material-icons md-24">edit</i>
+        </button>
+        <button mat-icon-button color="error" focusable="true" (click)="removeTemplate(row)">
+          <i class="material-icons">remove_circle</i>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+<template-details [template]="selectedTemplate"></template-details>
+
+<div class="example-section">
+  <button style="margin: 10px" mat-raised-button color="primary" (click)="clearTemplate()">Clear</button>
+  <button style="margin: 10px" mat-raised-button color="primary" (click)="upsertTemplate()">{{submitButtonLabel}}
+  </button>
+</div>
+
+

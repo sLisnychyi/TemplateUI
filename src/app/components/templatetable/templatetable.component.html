@@ -1,0 +1,88 @@
+<mat-card>
+  <mat-card-content>
+
+    <div class="example-section">
+      <button mat-raised-button color="primary" routerLink="/template">
+        Add new
+      </button>
+      <div class="example-section">
+        <button mat-button (click)="clearFilters()">Clear Filters</button>
+      </div>
+
+    </div>
+
+    <h2 class="example-h2">Filters:</h2>
+
+
+    <section class="example-section">
+      <label class="example-margin">Placements:</label>
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="select placements" [formControl]="placements" (closed)="onChange()" multiple>
+          <mat-option *ngFor="let placement of placementsList" [value]="placement">{{placement}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+    <section class="example-section">
+      <label class="example-margin">Partner:</label>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input placeholder="select partner" matInput [formControl]="partnerControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onChange()">
+            <mat-option *ngFor="let partner of filteredPartners | async" [value]="partner">
+              {{ partner }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </section>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="testMode" (change)="onChange()">Test Mode</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="mRaid" (change)="onChange()">Mraid</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="mobileWeb" (change)="onChange()">Mobile web</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="priv" (change)="onChange()">Private</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="blind" (change)="onChange()">Blind</mat-checkbox>
+    </section>
+
+
+  </mat-card-content>
+</mat-card>
+
+<div class="example-container mat-elevation-z8 data-table">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        Action
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" focusable="true" routerLink="/template/{{row}}">
+          <i class="material-icons md-24">edit</i>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+<div class="example-section">
+  <button mat-button color="primary" (click)="onChange()"><i class="material-icons">
+    send
+  </i></button>
+</div>
+
+
+
+
