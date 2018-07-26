@@ -1,6 +1,7 @@
 export class Template {
   'externalId': string;
   'name': string;
+  'lastUpdated': number;
   'expression': string;
   'creativeExpression': string;
   'partner': string;
@@ -12,9 +13,8 @@ export class Template {
       'height': number
     }
   };
-  'androidImageSize': string; // androidImageWidth
-  'iOSImageSize': string; // iOSImageWidth
-  // these are duplication of width/height from format, but leave them at this stage
+  'androidImageSize': string;
+  'iOSImageSize': string;
   'size': {
     'width': number,
     'height': number
@@ -29,22 +29,43 @@ export class Template {
   'private': boolean;
   'overlay': boolean;
   'showClose': boolean;
-  'isNetwork': boolean;
-  'isNativeVideo': boolean;
+  'network': boolean;
+  'nativeVideo': boolean;
   'engagement': boolean;
-  'isBigIcon': boolean;
+  'bigIcon': boolean;
   'blind': boolean;
-  'isTimer': boolean;
-  'isFloating': boolean;
-  'isnumbereractive': boolean;
-  'isMobileWebOnly': boolean;
-  'isAllClickable': boolean;
+  'timer': boolean;
+  'floating': boolean;
+  'interactive': boolean;
+  'mobileWebOnly': boolean;
+  'allClickable': boolean;
   'styleClass': string;
-  'isHtmlVideo': boolean;
+  'htmlVideo': boolean;
+  'interceptedMraid': boolean;
   'bgEffect': string;
   'targetRules': {
     'test': boolean,
     'mraid': boolean,
     'os': string,
+    'video': boolean,
+    'coppa': boolean, // name not in 2D_top_apps_banner_infra,3D_banner_infra
+    'portrait': boolean, // utils.diffnumber
+    'minOs': string,
+    'maxOs': string,
+    'minSdkVersion': string,
+    'maxSdkVersion': string,
+    'deviceType': string,
+    'categoryInclude': string[],
+    'categoryExclude': string[],
+    'appIdInclude': string[], // publisherId in templates
+    'appIdExclude': string[], // publisherId in templates
+    'developerIdInclude': string[],
+    'developerIdExclude': string[],
+    'channelIdInclude': string[],
+    'channelIdExclude': string[],
+    'geoInclude': string[],
+    'geoExclude': string[],
+    'serverInclude': string[],
+    'serverExclude': string[],
   };
 }

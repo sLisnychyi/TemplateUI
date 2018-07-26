@@ -40,6 +40,11 @@
       <mat-cell *matCellDef="let row"> {{row.format ? row.format.formatType : null}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="lastUpdated">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> LastUpdated</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.lastUpdated | date: 'yyyy-MM-dd HH:mm:ss'}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="actionsColumn">
       <mat-header-cell *matHeaderCellDef>
         Action

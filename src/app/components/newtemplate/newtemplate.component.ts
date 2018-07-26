@@ -18,7 +18,7 @@ export class NewtemplateComponent implements OnInit {
   templateName;
 
   dataSource;
-  displayedColumns = ['id', 'name', 'placement', 'partner', 'format', 'actionsColumn'];
+  displayedColumns = ['id', 'name', 'placement', 'partner', 'format', 'lastUpdated', 'actionsColumn'];
 
   submitButtonLabel = 'Add New';
   disableTemplateName: boolean;
@@ -63,7 +63,7 @@ export class NewtemplateComponent implements OnInit {
 
   editTemplate(template: Template) {
     this.selectedTemplate = template;
-    this.submitButtonLabel = 'Edit';
+    this.submitButtonLabel = 'Update';
   }
 
   clearTemplate() {
