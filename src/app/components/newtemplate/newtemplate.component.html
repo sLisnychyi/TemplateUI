@@ -35,11 +35,6 @@
       <mat-cell *matCellDef="let row"> {{row.partner}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="format">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Format</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.format ? row.format.formatType : null}}</mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="lastUpdated">
       <mat-header-cell *matHeaderCellDef mat-sort-header> LastUpdated</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.lastUpdated | date: 'yyyy-MM-dd HH:mm:ss'}}</mat-cell>

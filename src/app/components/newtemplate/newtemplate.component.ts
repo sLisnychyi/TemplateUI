@@ -18,7 +18,7 @@ export class NewtemplateComponent implements OnInit {
   templateName;
 
   dataSource;
-  displayedColumns = ['id', 'name', 'placement', 'partner', 'format', 'lastUpdated', 'actionsColumn'];
+  displayedColumns = ['id', 'name', 'placement', 'partner', 'lastUpdated', 'actionsColumn'];
 
   submitButtonLabel = 'Add New';
   disableTemplateName: boolean;
@@ -46,6 +46,8 @@ export class NewtemplateComponent implements OnInit {
           this.dataSource = new MatTableDataSource(resp);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
+        }, error => {
+          console.log('Cant get template. Details = ' + error);
         });
     } else {
       this.disableTemplateName = false;
@@ -92,6 +94,8 @@ export class NewtemplateComponent implements OnInit {
                 this.dataSource.paginator = this.paginator;
                 this.selectedTemplate = new Template();
               });
+          }, error => {
+            this.openDialog('Exception while removing template' + error);
           });
       }
     });
@@ -108,6 +112,8 @@ export class NewtemplateComponent implements OnInit {
             this.dataSource.paginator = this.paginator;
             this.disableTemplateName = true;
             this.clearTemplate();
+          }, error => {
+            this.openDialog('Exception while upsert template' + error);
           });
       });
     } else {
