@@ -43,6 +43,8 @@ export class Template {
   'htmlVideo': boolean;
   'interceptedMraid': boolean;
   'bgEffect': string;
+  'advertiserId': string;
+  'publisherId': string;
   'targetRules': {
     'test': boolean,
     'mraid': boolean,

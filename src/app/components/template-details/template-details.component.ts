@@ -57,6 +57,8 @@ export class TemplateDetailsComponent implements OnChanges {
   ctaColor: string;
   styleClass: string;
   bgEffect: string;
+  advertiserId: string;
+  publisherId: string;
   deviceType: string;
   minOs: string;
   maxOs: string;
@@ -182,6 +184,8 @@ export class TemplateDetailsComponent implements OnChanges {
       this.ctaColor = this.template.ctaColor;
       this.styleClass = this.template.styleClass;
       this.bgEffect = this.template.bgEffect;
+      this.advertiserId = this.template.advertiserId;
+      this.publisherId = this.template.publisherId;
     }
   }
 
@@ -276,6 +280,8 @@ export class TemplateDetailsComponent implements OnChanges {
     result.ctaColor = this.ctaColor;
     result.styleClass = this.styleClass;
     result.bgEffect = this.bgEffect;
+    result.advertiserId = this.advertiserId;
+    result.publisherId = this.publisherId;
 
     return result;
   }
