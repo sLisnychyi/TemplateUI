@@ -38,11 +38,41 @@
     </section>
 
     <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="testMode" (change)="onChange()">Test Mode</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="mRaid" (change)="onChange()">Mraid</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="mobileWeb" (change)="onChange()">Mobile web</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="priv" (change)="onChange()">Private</mat-checkbox>
-      <mat-checkbox class="example-margin" [(ngModel)]="blind" (change)="onChange()">Blind</mat-checkbox>
+      <mat-form-field>
+        <mat-select [formControl]="testMode" placeholder="TestMode" (selectionChange)="onChange()">
+          <mat-option value="all">all</mat-option>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [formControl]="mRaid" placeholder="MRaid" (selectionChange)="onChange()">
+          <mat-option value="all">all</mat-option>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [formControl]="mobileWeb" placeholder="MobileWeb" (selectionChange)="onChange()">
+          <mat-option value="all">all</mat-option>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [formControl]="priv" placeholder="Private" (selectionChange)="onChange()">
+          <mat-option value="all">all</mat-option>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [formControl]="blind" placeholder="Blind" (selectionChange)="onChange()">
+          <mat-option value="all">all</mat-option>
+          <mat-option value="true">true</mat-option>
+          <mat-option value="false">false</mat-option>
+        </mat-select>
+      </mat-form-field>
     </section>
 
 

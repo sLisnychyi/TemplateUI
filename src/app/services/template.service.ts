@@ -9,12 +9,12 @@ import {TemplateRequest} from '../models/templateRequest';
 })
 export class TemplateService {
 
-  private templateUrl = 'http://localhost:8080/AdPlatform/templateapp/templates';
-  private partnerUrl = 'http://localhost:8080/AdPlatform/templateapp/partners';
-  private templateProcessUrl = 'http://localhost:8080/AdPlatform/templateapp/template';
-  // private templateUrl = "templates";
-  // private partnerUrl = "partners";
-  // private templateProcessUrl = "template";
+  // private templateUrl = 'http://localhost:8080/AdPlatform/templateapp/templates';
+  // private partnerUrl = 'http://localhost:8080/AdPlatform/templateapp/partners';
+  // private templateProcessUrl = 'http://localhost:8080/AdPlatform/templateapp/template';
+  private templateUrl = 'templates';
+  private partnerUrl = 'partners';
+  private templateProcessUrl = 'template';
 
   constructor(private http: HttpClient) {
   }

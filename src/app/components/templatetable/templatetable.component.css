@@ -45,7 +45,7 @@ table {
 }
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+  margin: 0 10px;
 }
 
 td, th {

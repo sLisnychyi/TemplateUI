@@ -86,8 +86,6 @@ export class TemplateDetailsComponent implements OnChanges {
     this.operationSystems = templateMetadata.os;
   }
 
-  ngOnInit() {
-  }
 
   ngOnChanges(): void {
     console.log('Template onChange:');

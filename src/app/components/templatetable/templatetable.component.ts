@@ -29,12 +29,12 @@ export class TemplatetableComponent implements OnInit {
   placements = new FormControl();
   placementsList: Array<String>;
 
-  testMode = false;
-  mRaid = false;
-  mobileWeb = false;
-  priv = false;
-  blind = false;
+  testMode = new FormControl();
+  mRaid = new FormControl();
+  mobileWeb = new FormControl();
+  priv = new FormControl();
 
+  blind = new FormControl();
   constructor(private templateService: TemplateService, private router: Router,
               private templateMetadata: TemplateMetadataProvider) {
     this.placementsList = templateMetadata.placements;
@@ -57,11 +57,11 @@ export class TemplatetableComponent implements OnInit {
     const templateReq = new TemplateRequest();
     templateReq.placements = this.placements.value;
     templateReq.partner = this.partnerControl.value;
-    templateReq.testMode = this.testMode;
-    templateReq.mraid = this.mRaid;
-    templateReq.mobileWeb = this.mobileWeb;
-    templateReq.privateTemplate = this.priv;
-    templateReq.blind = this.blind;
+    templateReq.testMode = this.testMode.value;
+    templateReq.mraid = this.mRaid.value;
+    templateReq.mobileWeb = this.mobileWeb.value;
+    templateReq.privateTemplate = this.priv.value;
+    templateReq.blind = this.blind.value;
     console.log(JSON.stringify(templateReq));
 
     this.templateService.getTemplates(templateReq)
@@ -74,17 +74,17 @@ export class TemplatetableComponent implements OnInit {
 
   filter(val: string): Array<String> {
     return this.partners.filter(partner => partner.toLowerCase().includes(val.toLowerCase())
-    )
+    );
   }
 
   clearFilters() {
     this.placements = new FormControl();
     this.partnerControl = new FormControl();
-    this.testMode = false;
-    this.mRaid = false;
-    this.mobileWeb = false;
-    this.priv = false;
-    this.blind = false;
+    this.testMode = new FormControl();
+    this.mRaid = new FormControl();
+    this.mobileWeb = new FormControl();
+    this.priv = new FormControl();
+    this.blind = new FormControl();
     this.refresh();
 
   }
